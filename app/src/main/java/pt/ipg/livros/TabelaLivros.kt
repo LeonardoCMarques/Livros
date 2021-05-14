@@ -12,22 +12,20 @@ class TabelaLivros(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE " + NOME_Tabela+
                 "(" + BaseColumns._ID+
                 " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                CAMPO_TITULO + "TEXT NOT NULL," +
-                CAMPO_AUTOR + "TEXT NOT NULL," +
-                CAMPO_ID_CATEGORIA + "INTEGER NOT NULL," +
-                "FOREIGN KEY (" + CAMPO_ID_CATEGORIA + ")" +
-                "REFERENCES" + TabelaCategorias.NOME_Tabela +
+                CAMPO_TITULO+ "TEXT NOT NULL," +
+                CAMPO_AUTOR+ "TEXT NOT NULL," +
+                CAMPO_ID_CATEGORIA+ " INTEGER NOT NULL,"+
+                "FOREIGN KEY ("+ CAMPO_ID_CATEGORIA+")"+
+                "REFERENCES " + TabelaCategorias.NOME_Tabela+
                 ")"
-
-        // CREATE TABLEA livros(
-        //      _id INTEGER PRIMARY KEY AUTOINCREMENT,
-        //      titulo TEXT NOT NUL,
-        //      autor TEXT NOT NUL,
-        //      id_categoria INTEGER NOT NUL,
-        //      FOREIGN KEY (id_categoria) REFERENCES categorias
-
         )
     }
+
+    // CREATE TABLE livros(
+    //       _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    //       titulo TEXT NOT NULL,
+    //       autor TEXT NOT NULL,
+    //       id_categoria INTEGER NOT NULL, FOREIGN KEY (id_categoria) REFERENCES categorias
 
     // CRUD
 
@@ -35,7 +33,7 @@ class TabelaLivros(db: SQLiteDatabase) {
         return db.insert(NOME_Tabela, null, values)
     }
 
-    fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>): Int{
+    fun update(values: ContentValues, whereClause: String, whereArgs: Array<String>): Int {
         return db.update(NOME_Tabela, values, whereClause, whereArgs)
     }
 
@@ -55,7 +53,7 @@ class TabelaLivros(db: SQLiteDatabase) {
     }
 
     companion object{
-        const val NOME_Tabela = "CATEGORIAS"
+        const val NOME_Tabela = "livros"
         const val CAMPO_TITULO = "titulo"
         const val CAMPO_AUTOR = "autor"
         const val CAMPO_ID_CATEGORIA = "id_categoria"
